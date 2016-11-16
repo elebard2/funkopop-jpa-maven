@@ -72,7 +72,7 @@ public class FunkoPopService
 	}
 
 	
-	
+	ExternalService externalService;
 	/**
 	 * If it's rainy, funkoPops have to move to Shelter
 	 * @return
@@ -81,7 +81,7 @@ public class FunkoPopService
 	{
 		
 		// Always difficult to choose between Optional and Exception !
-		boolean weatherGood = new ExternalService().isWeatherGood()
+		boolean weatherGood = externalService.isWeatherGood()
 				.orElseThrow(() -> new RuntimeException("No weather found"));
 
 		List<FunkoPop> result = new ArrayList<>();

@@ -6,8 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import io.robusta.jpa.HasId;
-
 @Entity
 public class FunkoPop implements HasId
 {
@@ -32,6 +30,10 @@ public class FunkoPop implements HasId
 		
 		this.name = name;
 		this.universe = universe;
+	}
+
+	public FunkoPop(String name) {
+		this.name = name;
 	}
 
 	public String getName()
@@ -96,7 +98,20 @@ public class FunkoPop implements HasId
 	
 	@Override
 	public String toString() {
+		if(this.name!=""){
+			if(this.universe!=null){
+				return this.name + " ("+this.universe.name+")";
+			} else {
+				return this.name + " (Universe vide)";
+			}
+			
+		} else {
+			if(this.universe!=null){
+				return "John Doe" + " ("+this.universe.name+")";
+			} else {
+				return "John Doe (Universe vide)";
+			}
+		}
 		
-		return this.name + " ("+this.universe.name+")";
 	}
 }
